@@ -130,6 +130,7 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gch='git checkout'
 
 # Common shell functions
 alias less='less -r'
@@ -211,3 +212,13 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
+
+alias c="composer"
+alias v="vagrant"
+
+alias pcf="php-cs-fixer fix --verbose"
+alias gmp='gps; git checkout master; gm develop; gps; git checkout develop;'
+
+alias art='php artisan'
+alias phpconfig='php -i | grep "Configuration File"'
+alias dcp='./dcp'
