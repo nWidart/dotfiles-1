@@ -1,4 +1,14 @@
 # path, the 0 in the filename causes this to load first
+#path=(
+#  $path
+#  $HOME/.yadr/bin
+#  $HOME/.yadr/bin/yadr
+#  $HOME/.composer/vendor/bin
+#)
+
+#export MAMP_PATH=/Applications/MAMP/bin/php/php7.0.15/bin
+#export PATH="$MAMP_PATH:$PATH"
+
 
 pathAppend() {
   # Only adds to the path if it's not already there
@@ -12,3 +22,4 @@ PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS;
 
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
+pathAppend "/Applications/MAMP/bin/php/php7.0.15/bin"
