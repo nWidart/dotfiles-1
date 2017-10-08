@@ -23,5 +23,7 @@ PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS;
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
 pathAppend "$HOME/.composer/vendor/bin"
+pathAppend "$HOME/.yadr/bin"
+pathAppend "$HOME/.yadr/bin/yadr"
 
 export PATH=/Applications/MAMP/bin/php/php7.0.22/bin:$PATH
