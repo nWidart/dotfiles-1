@@ -225,3 +225,19 @@ alias dcp='./dcp'
 alias mw='npm run watch'
 alias md='npm run dev'
 alias mp='npm run production'
+
+# Symfony
+alias console='./bin/console'
+
+# Phinx
+alias phinx='./vendor/bin/phinx'
+
+# Minikube
+alias ministart='minikube start && eval $(minikube docker-env)'
+alias ministop='minikube stop && eval $(docker-machine env -u)'
+alias minienv='eval $(minikube docker-env)'
+alias dockerenv='eval $(docker-machine env -u)'
+
+# Host Helper
+alias eh='sudo vim /etc/hosts'
+alias cath='cat /etc/hosts'

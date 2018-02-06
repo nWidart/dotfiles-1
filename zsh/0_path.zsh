@@ -25,5 +25,7 @@ pathAppend "$HOME/.yadr/bin/yadr"
 pathAppend "$HOME/.composer/vendor/bin"
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
+pathAppend "$HOME/Library/Python/3.5/bin"
 
-export PATH=/Applications/MAMP/bin/php/php7.0.22/bin:$PATH
+# export PATH=/Applications/MAMP/bin/php/php7.0.22/bin:$PATH
+export PATH=/Applications/MAMP/bin/php/php7.1.8/bin:$PATH
