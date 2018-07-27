@@ -130,7 +130,7 @@
 [user]
 	name = Nicolas Widart
 	email = n.widart@gmail.com
-  signingkey = 10DFE98A
+  signingkey = 78B932A7
 [commit]
   gpgsign = true
 [rebase]
