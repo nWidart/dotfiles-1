@@ -131,6 +131,9 @@ alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias gch='git checkout'
+alias gstate='git fetch --prune ; git fetch --tags ; git branch -vv && git status'
+alias gdm='git branch --merged | egrep -v "(^\*|master|develop)" | xargs git branch -d'
+alias nah='git reset --hard && git clean -df'
 
 # Common shell functions
 alias less='less -r'
@@ -227,17 +230,65 @@ alias md='npm run dev'
 alias mp='npm run production'
 
 # Symfony
-alias console='./bin/console'
+alias console='php ./bin/console'
 
 # Phinx
 alias phinx='./vendor/bin/phinx'
 
 # Minikube
-alias ministart='minikube start && eval $(minikube docker-env)'
-alias ministop='minikube stop && eval $(docker-machine env -u)'
-alias minienv='eval $(minikube docker-env)'
+alias mk='minikube'
+alias mkstart='minikube start && eval $(minikube docker-env)'
+alias mkstop='minikube stop && eval $(docker-machine env -u)'
+alias mkenv='eval $(minikube docker-env)'
 alias dockerenv='eval $(docker-machine env -u)'
 
 # Host Helper
 alias eh='sudo vim /etc/hosts'
 alias cath='cat /etc/hosts'
+
+# Make directory and CD into it
+mcd () {
+    mkdir -p $1
+    cd $1
+}
+
+# Extract/unzip any format
+function extract {
+ if [ -z "$1" ]; then
+    # display usage if no parameters given
+    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+    echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
+    return 1
+ else
+    for n in $@
+    do
+      if [ -f "$n" ] ; then
+          case "${n%,}" in
+            *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
+                         tar xvf "$n"       ;;
+            *.lzma)      unlzma ./"$n"      ;;
+            *.bz2)       bunzip2 ./"$n"     ;;
+            *.rar)       unrar x -ad ./"$n" ;;
+            *.gz)        gunzip ./"$n"      ;;
+            *.zip)       unzip ./"$n"       ;;
+            *.z)         uncompress ./"$n"  ;;
+            *.7z|*.arj|*.cab|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.rpm|*.udf|*.wim|*.xar)
+                         7z x ./"$n"        ;;
+            *.xz)        unxz ./"$n"        ;;
+            *.exe)       cabextract ./"$n"  ;;
+            *)
+                         echo "extract: '$n' - unknown archive method"
+                         return 1
+                         ;;
+          esac
+      else
+          echo "'$n' - file does not exist"
+          return 1
+      fi
+    done
+fi
+}
+
+# List every path in the PATH
+alias pathdebug='echo -e ${PATH//:/\\n}'
+alias startmysql='docker run --name mysql57 -v /Users/nicolaswidart/Sites/MySQL/mysql57:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql:5.7'

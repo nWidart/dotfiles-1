@@ -136,3 +136,5 @@
 [rebase]
 #	autosquash = true
 	autoStash = true
+[pager]
+	branch = false
